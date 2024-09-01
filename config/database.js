@@ -85,7 +85,7 @@ db.connect(err => {
   }
   console.log('Connected to the database.');
   try{
-    connection.query(createTablesSQL);
+    db.query(createTablesSQL);
     console.log('Tables created or already exist.');
   }
   catch (err) {
