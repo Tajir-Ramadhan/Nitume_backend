@@ -9,6 +9,7 @@ const db = mysql.createConnection({
   user: dbUrl.username,
   password: dbUrl.password,
   database: dbUrl.pathname.substring(1), // Temporarily connect to the existing database
+  multipleStatements: true
 });
 
 // SQL Commands to create tables
