@@ -1,18 +1,22 @@
 import mysql from "mysql2";
+import url from 'url';
 
-// create the connection to database
-
+// Parse the JAWSDB_URL environment variable
+const dbUrl = new url.URL(process.env.JAWSDB_URL);
 
 const db = mysql.createConnection({
-  host: process.env.JAWSDB_URL.split('@')[1].split('/')[0],
-  user: process.env.JAWSDB_URL.split('//')[1].split(':')[0],
-  password: process.env.JAWSDB_URL.split(':')[2].split('@')[0],
-  database: 'db_restaurant',
+  host: dbUrl.hostname,
+  user: dbUrl.username,
+  password: dbUrl.password,
+  database: dbUrl.pathname.substring(1),  // removes leading '/' from pathname
 });
 
 db.connect(err => {
-  if (err) throw err;
-  console.log('Connected to db_restaurant database.');
+  if (err) {
+    console.error('Database connection failed:', err.stack);
+    return;
+  }
+  console.log('Connected to the database.');
 });
 
 export default db;
