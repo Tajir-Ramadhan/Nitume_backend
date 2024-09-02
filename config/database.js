@@ -2,7 +2,7 @@ import mysql from "mysql2";
 import url from 'url';
 
 // Parse the JAWSDB_URL environment variable
-const dbUrl = new url.URL(process.env.JAWSDB_URL);
+const dbUrl = new url.URL(process.env.JAWSDB_MARIA_URL);
 
 const db = mysql.createConnection({
   host: dbUrl.hostname,
