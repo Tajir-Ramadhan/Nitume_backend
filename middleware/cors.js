@@ -1,5 +1,5 @@
 export const cors = (req, res, next) => {
-    const allowedOrigins = ['http://localhost:8080', 'http://localhost:8081', 'http://localhost','http://localhost:8082'];
+    const allowedOrigins = ['https://nitume.ibravoosmart.co.tz'];
     const origin = req.headers.origin;
     
     if (allowedOrigins.includes(origin)) {
